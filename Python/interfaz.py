@@ -94,6 +94,11 @@ canvas_colores.tag_bind(id_amarillo, '<Button-1>', lambda x: mostrar_color('yell
 id_magenta = canvas_colores.create_rectangle((100,10,120,30), fill = 'magenta')
 canvas_colores.tag_bind(id_magenta, '<Button-1>', lambda x: mostrar_color('magenta'))
 
+id_azul = canvas_colores.create_rectangle((130,10,150,30), fill = 'blue')
+canvas_colores.tag_bind(id_azul, '<Button-1>', lambda x: mostrar_color('blue'))
+
+id_naranja = canvas_colores.create_rectangle((160,10,180,30), fill = 'orange')
+canvas_colores.tag_bind(id_naranja, '<Button-1>', lambda x: mostrar_color('orange'))
 
 # espesor pincel
 
