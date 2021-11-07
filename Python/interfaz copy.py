@@ -14,7 +14,8 @@ def linea_xy(event):
 
 def linea(event):
     global linea_x, linea_y
-    canvas.create_line((linea_x, linea_y, event.x, event.y), fill = color, width = espesor_pincel.get())
+    points = [event.x, event.y, event.x+5, event.y, event.x+5, event.y-5, event.x, event.y-5,]
+    canvas.create_polygon((points), outline = color, fill = color, width = espesor_pincel.get())
     linea_x = event.x
     linea_y = event.y
 
