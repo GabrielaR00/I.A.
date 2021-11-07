@@ -55,7 +55,7 @@ ventana = Tk()
 ventana.state =('zoomed')
 ventana.config(bg='black')
 ventana.title('Dibujar')
-ventana.iconbitmap('icono_dibujo.ico')
+#ventana.iconbitmap('icono_dibujo.ico')
 
 ventana.rowconfigure(0,weight=1)
 ventana.columnconfigure(0,weight=1)
@@ -99,6 +99,12 @@ canvas_colores.tag_bind(id_azul, '<Button-1>', lambda x: mostrar_color('blue'))
 
 id_naranja = canvas_colores.create_rectangle((160,10,180,30), fill = 'orange')
 canvas_colores.tag_bind(id_naranja, '<Button-1>', lambda x: mostrar_color('orange'))
+
+id_morado = canvas_colores.create_rectangle((190,10,210,30), fill = 'purple')
+canvas_colores.tag_bind(id_morado, '<Button-1>', lambda x: mostrar_color('purple'))
+
+id_negro = canvas_colores.create_rectangle((220,10,240,30), fill = 'black')
+canvas_colores.tag_bind(id_negro, '<Button-1>', lambda x: mostrar_color('black'))
 
 # espesor pincel
 
