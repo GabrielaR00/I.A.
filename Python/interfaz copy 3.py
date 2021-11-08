@@ -6,8 +6,7 @@ import PIL.ImageGrab as ImageGrab
 
 ventana = Tk()
 ventana.title("Pixel Art 1.0")
-ventana.configure (bd=10)
-
+ventana.configure(bd=10)
 
 
 # frame principal comandos y canvas de dibujo
@@ -19,11 +18,12 @@ framederecha=Frame(ventana, height=750, width=750, bg = 'Gainsboro')
 framederecha.grid(column = 1, row = 0, sticky = 'n')
 
 frame = Frame(framederecha, height=70, width=700, bg = 'white')
-frame.grid(column = 0, row = 1, columnspan=2, pady=2, sticky = E+W)
+frame.grid(column = 0, row = 1, columnspan= 2, pady=2, sticky = 'ew')
 frame.columnconfigure(0, minsize=100, weight=5)
 
 framebotones=Frame(framederecha, height=100, width=750, bg = 'Gainsboro')
-framebotones.grid(column = 0, row = 2, sticky = E+W)
+framebotones.grid(column = 0, row = 2, columnspan=2, sticky ='ew')
+
 
 #canvas 
 
@@ -117,12 +117,22 @@ def guardar():
     
 def botones():
 
+
+    #framebotones.rowconfigure((0, 1), weight=1)
     boton2 = Button(framebotones, text="Guardar", height=2, cursor="hand2", command=guardar)
-    boton2.grid(column=0, row=0, sticky=E+W)
+    #boton2.grid(column=0, row=0, sticky="EW")
+    #framebotones.columnconfigure(0, weight=2)
+    boton2.pack(side="right", fill="both", expand=True)
     boton3 = Button (framebotones, text="Limpiar", height=2, cursor="hand2", command=nuevo)
-    boton3.grid(column=1, row=0, sticky=E+W)
+    #boton3.grid(column=1, row=0, sticky="EW")
+    #framebotones.columnconfigure(1, weight=2)
+    boton3.pack(side="right", fill="both", expand=True)
     boton4 = Button (framebotones, text="Borrador", height=2, cursor="hand2", command=borrar)
-    boton4.grid(column=2, row=0, sticky=E+W)
+    #boton4.grid(column=2, row=0, sticky="EW")
+    #framebotones.columnconfigure(2, weight=2)
+    boton4.pack(side="right", fill="both", expand=True)
+
+
 
 botones()
 
