@@ -1,41 +1,59 @@
-import tkinter as tk
-from tkinter import ttk
+from tkinter import *
+
+root = Tk() #Makes the window
+root.wm_title("Window Title") #Makes the title that will appear in the top left
+root.config(background = "#FFFFFF")
 
 
-class App(tk.Tk):
-    def __init__(self):
-        super().__init__()
+def redCircle():
+    circleCanvas.create_oval(20, 20, 80, 80, width=0, fill='red')
+    colorLog.insert(0.0, "Red\n")
 
-        self.geometry("240x100")
-        self.title('Login')
-        self.resizable(0, 0)
+def yelCircle():
+    circleCanvas.create_oval(20, 20, 80, 80, width=0, fill='yellow')
+    colorLog.insert(0.0, "Yellow\n")
 
-        # configure the grid
-        self.columnconfigure(0, weight=1)
-        self.columnconfigure(1, weight=3)
-
-        self.create_widgets()
-
-    def create_widgets(self):
-        # username
-        username_label = ttk.Label(self, text="Username:")
-        username_label.grid(column=0, row=0, sticky=tk.W, padx=5, pady=5)
-
-        username_entry = ttk.Entry(self)
-        username_entry.grid(column=1, row=0, sticky=tk.E, padx=5, pady=5)
-
-        # password
-        password_label = ttk.Label(self, text="Password:")
-        password_label.grid(column=0, row=1, sticky=tk.W, padx=5, pady=5)
-
-        password_entry = ttk.Entry(self,  show="*")
-        password_entry.grid(column=1, row=1, sticky=tk.E, padx=5, pady=5)
-
-        # login button
-        login_button = ttk.Button(self, text="Login")
-        login_button.grid(column=1, row=3, sticky=tk.E, padx=5, pady=5)
+def grnCircle():
+    circleCanvas.create_oval(20, 20, 80, 80, width=0, fill='green')
+    colorLog.insert(0.0, "Green\n")
 
 
-if __name__ == "__main__":
-    app = App()
-    app.mainloop()
+#Left Frame and its contents
+leftFrame = Frame(root, width=200, height = 600)
+leftFrame.grid(row=0, column=0, padx=10, pady=2)
+
+Label(leftFrame, text="Instructions:").grid(row=0, column=0, padx=10, pady=2)
+
+Instruct = Label(leftFrame, text="1\n2\n2\n3\n4\n5\n6\n7\n8\n9\n")
+Instruct.grid(row=1, column=0, padx=10, pady=2)
+
+try:
+    imageEx = PhotoImage(file = 'image.gif')
+    Label(leftFrame, image=imageEx).grid(row=2, column=0, padx=10, pady=2)
+except:
+    print("Image not found")
+
+#Right Frame and its contents
+rightFrame = Frame(root, width=200, height = 600)
+rightFrame.grid(row=0, column=1, padx=10, pady=2)
+
+circleCanvas = Canvas(rightFrame, width=100, height=100, bg='white')
+circleCanvas.grid(row=0, column=0, padx=10, pady=2)
+
+btnFrame = Frame(rightFrame, width=200, height = 200)
+btnFrame.grid(row=1, column=0, padx=10, pady=2)
+
+colorLog = Text(rightFrame, width = 30, height = 10, takefocus=0)
+colorLog.grid(row=2, column=0, padx=10, pady=2)
+
+redBtn = Button(btnFrame, text="Red", command=redCircle)
+redBtn.grid(row=0, column=0, padx=10, pady=2)
+
+yellowBtn = Button(btnFrame, text="Yellow", command=yelCircle)
+yellowBtn.grid(row=0, column=1, padx=10, pady=2)
+
+greenBtn = Button(btnFrame, text="Green", command=grnCircle)
+greenBtn.grid(row=0, column=2, padx=10, pady=2)
+
+
+root.mainloop() #start monitoring and updating the GUI

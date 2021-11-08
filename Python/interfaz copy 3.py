@@ -8,16 +8,27 @@ ventana = Tk()
 ventana.title("Pixel Art 1.0")
 ventana.configure (bd=10)
 
-canvas = Canvas (ventana, width=701, height=701, bg="Gainsboro")
-canvas.grid(column=0, row=0, columnspan=2)
+
 
 # frame principal comandos y canvas de dibujo
 
-# frame = Frame(ventana, height=70, width=700, bg = 'white')
-# frame.grid(column = 0, row = 1, columnspan=2, pady=2, sticky = E+W)
-# frame.columnconfigure(0, minsize=100, weight=5)
+frameizquierda=Frame(ventana, height=750, width=200, bg = 'Gainsboro')
+frameizquierda.grid(column = 0, row = 0, sticky = 'n')
 
+framederecha=Frame(ventana, height=750, width=750, bg = 'Gainsboro')
+framederecha.grid(column = 1, row = 0, sticky = 'n')
 
+frame = Frame(framederecha, height=70, width=700, bg = 'white')
+frame.grid(column = 0, row = 1, columnspan=2, pady=2, sticky = E+W)
+frame.columnconfigure(0, minsize=100, weight=5)
+
+framebotones=Frame(framederecha, height=100, width=750, bg = 'Gainsboro')
+framebotones.grid(column = 0, row = 2, sticky = E+W)
+
+#canvas 
+
+canvas = Canvas (framederecha, width=750, height=750, bg="Gainsboro")
+canvas.grid(column=0, row=0, columnspan=2)
 
 def color1(event):
     current = event.widget.find_withtag('current')
@@ -36,54 +47,89 @@ def mostrar_color(nuevo_color):
     global color
     color = nuevo_color
     
-color="Blue Violet"
-def paleta():   
+color="Black"
+def paleta():       
+
+    canvas_colores = Canvas(frame, bg='gainsboro', width=700, height=70)
+    canvas_colores.grid(column=0, row=0, sticky='ew', padx=2, pady=2)
+
+    id_white = canvas_colores.create_rectangle((10,10,40,40), fill = 'white', outline="")
+    canvas_colores.tag_bind(id_white, '<Button-1>', lambda x: mostrar_color('white'))
+
+    id_negro = canvas_colores.create_rectangle((50,10,80,40), fill = 'black', outline="")
+    canvas_colores.tag_bind(id_negro, '<Button-1>', lambda x: mostrar_color('black'))
     
+    id_grey = canvas_colores.create_rectangle((90,10,120,40), fill = 'grey', outline="")
+    canvas_colores.tag_bind(id_grey, '<Button-1>', lambda x: mostrar_color('grey'))
 
-    canvas_colores = Canvas(ventana, bg='grey', width=700, height=70)
-    canvas_colores.grid(column=0, row=1, sticky='ew', padx=1, pady=1)
-
-    id_rojo = canvas_colores.create_rectangle((10,10,730,30), fill = 'red')
-    canvas_colores.tag_bind(id_rojo, '<Button-1>', lambda x: mostrar_color('red'))
-
-    id_verde = canvas_colores.create_rectangle((40,10,60,30), fill = 'green')
-    canvas_colores.tag_bind(id_verde, '<Button-1>', lambda x: mostrar_color('green'))
-
-    id_amarillo = canvas_colores.create_rectangle((70,10,90,30), fill = 'yellow')
-    canvas_colores.tag_bind(id_amarillo, '<Button-1>', lambda x: mostrar_color('yellow'))
-
-    id_magenta = canvas_colores.create_rectangle((100,10,120,30), fill = 'magenta')
-    canvas_colores.tag_bind(id_magenta, '<Button-1>', lambda x: mostrar_color('magenta'))
-
-    id_azul = canvas_colores.create_rectangle((130,10,150,30), fill = 'blue')
+    id_azul = canvas_colores.create_rectangle((130,10,160,40), fill = 'blue', outline="")
     canvas_colores.tag_bind(id_azul, '<Button-1>', lambda x: mostrar_color('blue'))
 
-    id_naranja = canvas_colores.create_rectangle((160,10,180,30), fill = 'orange')
+    id_cyan = canvas_colores.create_rectangle((170,10,200,40), fill = 'cyan', outline="")
+    canvas_colores.tag_bind(id_cyan, '<Button-1>', lambda x: mostrar_color('cyan'))
+
+    id_verdeoscuro = canvas_colores.create_rectangle((210,10,240,40), fill = 'dark green', outline="")
+    canvas_colores.tag_bind(id_verdeoscuro, '<Button-1>', lambda x: mostrar_color('dark green'))   
+
+    id_verde = canvas_colores.create_rectangle((250,10,280,40), fill = 'green', outline="")
+    canvas_colores.tag_bind(id_verde, '<Button-1>', lambda x: mostrar_color('green'))   
+
+    id_amarillo = canvas_colores.create_rectangle((290,10,320,40), fill = 'yellow', outline="")
+    canvas_colores.tag_bind(id_amarillo, '<Button-1>', lambda x: mostrar_color('yellow'))
+
+    id_cafe = canvas_colores.create_rectangle((330,10,360,40), fill = 'brown', outline="")
+    canvas_colores.tag_bind(id_cafe, '<Button-1>', lambda x: mostrar_color('brown'))    
+
+    id_naranja = canvas_colores.create_rectangle((370,10,400,40), fill = 'orange', outline="")
     canvas_colores.tag_bind(id_naranja, '<Button-1>', lambda x: mostrar_color('orange'))
+    
+    id_rojo = canvas_colores.create_rectangle((410,10,440,40), fill = 'red', outline="")
+    canvas_colores.tag_bind(id_rojo, '<Button-1>', lambda x: mostrar_color('red'))       
 
-    id_morado = canvas_colores.create_rectangle((190,10,210,30), fill = 'purple')
-    canvas_colores.tag_bind(id_morado, '<Button-1>', lambda x: mostrar_color('purple'))
+    id_magenta = canvas_colores.create_rectangle((450,10,480,40), fill = 'magenta', outline="")
+    canvas_colores.tag_bind(id_magenta, '<Button-1>', lambda x: mostrar_color('magenta'))
 
-    id_negro = canvas_colores.create_rectangle((220,10,240,30), fill = 'black')
-    canvas_colores.tag_bind(id_negro, '<Button-1>', lambda x: mostrar_color('black'))
+    id_morado = canvas_colores.create_rectangle((490,10,520,40), fill = 'purple', outline="")
+    canvas_colores.tag_bind(id_morado, '<Button-1>', lambda x: mostrar_color('purple'))   
+      
 
-    # c = colorchooser.askcolor()
-    # color = c[1]
-   
+paleta()
 
+
+def borrar():
+    global color
+    color = 'White'
 
 def guardar():
-    canvas.postscript (file="Pixel_art.eps")
-    
+    try:
+        filename = filedialog.asksaveasfilename(defaultextension='.png')
 
-boton2 = Button(ventana, text="Save", height=2, cursor="hand2", command=guardar)
-boton2.grid(column=0, row=2, sticky=E+W)
-boton3 = Button (ventana, text="New", height=2, cursor="hand2", command=nuevo)
-boton3.grid(column=1, row=2, sticky=E+W)
+        x = ventana.winfo_rootx() + canvas.winfo_x()
+        y = ventana.winfo_rooty() + canvas.winfo_y()
+
+        x1 = x + canvas.winfo_width()
+        y1 = y + canvas.winfo_height()
+
+        ImageGrab.grab().crop((x, y, x1, y1)).save(filename)
+        messagebox.showinfo('Guardar Dibujo','Imagen guardada en: ' + str(filename))
+    except:
+        messagebox.showerror('Guardar Dibujo', 'Imagen no guardada\n Error')
+    
+def botones():
+
+    boton2 = Button(framebotones, text="Guardar", height=2, cursor="hand2", command=guardar)
+    boton2.grid(column=0, row=0, sticky=E+W)
+    boton3 = Button (framebotones, text="Limpiar", height=2, cursor="hand2", command=nuevo)
+    boton3.grid(column=1, row=0, sticky=E+W)
+    boton4 = Button (framebotones, text="Borrador", height=2, cursor="hand2", command=borrar)
+    boton4.grid(column=2, row=0, sticky=E+W)
+
+botones()
+
 
 def cuadricula():
-    for y in range(2,700,15):
-        for x in range (2,700,15):
+    for y in range(2,750,15):
+        for x in range (2,750,15):
             cua=canvas.create_rectangle(x, y, x+15, y+15, fill="Ghost White", width=1, outline="Gainsboro") 
             canvas.tag_bind(cua, '<Button-1>', color1) 
             canvas.tag_bind(cua, '<Button-3>', color2)
