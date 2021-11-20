@@ -83,7 +83,7 @@ def nuevo():
 def mostrar_color(nuevo_color):
     global color, outline
     color = nuevo_color
-    outline = ""
+    outline = nuevo_color
     
 
 color="Black"
