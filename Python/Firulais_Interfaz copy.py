@@ -69,7 +69,7 @@ def abajo():
 def color1():
     global centro_x, centro_y
     item  = canvas.create_rectangle(centro_x, centro_y, centro_x+15, centro_y+15) 
-    canvas.itemconfigure(item, fill=color, outline=color)
+    canvas.itemconfigure(item, fill=color, outline=outline)
 
 
 def color2():
@@ -81,11 +81,13 @@ def nuevo():
     cuadricula()
 
 def mostrar_color(nuevo_color):
-    global color
+    global color, outline
     color = nuevo_color
+    outline = ""
     
 
 color="Black"
+outline = ""
 def paleta():       
 
     canvas_colores = Canvas(frame, bg='gainsboro', width=700, height=70)
@@ -134,8 +136,9 @@ def paleta():
 paleta()
 
 def borrar():
-    global color
-    color = 'White'
+    global color, outline
+    color = 'Ghost White'
+    outline = 'Gainsboro'
 
 def guardar():
     try:
