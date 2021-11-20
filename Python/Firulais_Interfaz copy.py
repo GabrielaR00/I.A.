@@ -91,14 +91,14 @@ def paleta():
     canvas_colores = Canvas(frame, bg='gainsboro', width=700, height=70)
     canvas_colores.grid(column=0, row=0, sticky='ew', padx=2, pady=2)
 
-    id_white = canvas_colores.create_rectangle((10,10,40,40), fill = 'white', outline="")
-    canvas_colores.tag_bind(id_white, '<Button-1>', lambda x: mostrar_color('white'))
+    id_blanco = canvas_colores.create_rectangle((10,10,40,40), fill = 'white', outline="")
+    canvas_colores.tag_bind(id_blanco, '<Button-1>', lambda x: mostrar_color('white'))
 
     id_negro = canvas_colores.create_rectangle((50,10,80,40), fill = 'black', outline="")
     canvas_colores.tag_bind(id_negro, '<Button-1>', lambda x: mostrar_color('black'))
     
-    id_grey = canvas_colores.create_rectangle((90,10,120,40), fill = 'grey', outline="")
-    canvas_colores.tag_bind(id_grey, '<Button-1>', lambda x: mostrar_color('grey'))
+    id_gris = canvas_colores.create_rectangle((90,10,120,40), fill = 'grey', outline="")
+    canvas_colores.tag_bind(id_gris, '<Button-1>', lambda x: mostrar_color('grey'))
 
     id_azul = canvas_colores.create_rectangle((130,10,160,40), fill = 'blue', outline="")
     canvas_colores.tag_bind(id_azul, '<Button-1>', lambda x: mostrar_color('blue'))
