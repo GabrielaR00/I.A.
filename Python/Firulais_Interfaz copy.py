@@ -87,7 +87,7 @@ def mostrar_color(nuevo_color):
     
 
 color="Black"
-outline = ""
+outline = "Black"
 def paleta():       
 
     canvas_colores = Canvas(frame, bg='gainsboro', width=700, height=70)
