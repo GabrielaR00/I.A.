@@ -1,11 +1,13 @@
+from tkinter import messagebox
 import webbrowser
 import speech_recognition as sr
 
 from tkinter import *
 from tkinter import colorchooser
 
-from tkinter import Canvas, Tk, ttk, Frame, Button, Widget, messagebox, filedialog, Scale, HORIZONTAL, ALL
+from tkinter import Canvas, Tk, ttk, Frame, Button, Widget, filedialog, Scale, HORIZONTAL, ALL
 import PIL.ImageGrab as ImageGrab
+from tkinter.messagebox import *
 
 reco= sr.Recognizer()
 
@@ -18,8 +20,9 @@ centro_y = 362
 
 # frame principal comandos y canvas de dibujo
 
-frameizquierda=Frame(ventana, height=750, width=200, bg = 'Gainsboro')
+frameizquierda=Frame(ventana, height=500, width=200, bg = 'Gainsboro')
 frameizquierda.grid(column = 0, row = 0, sticky = 'n')
+
 
 framederecha=Frame(ventana, height=750, width=750, bg = 'Gainsboro')
 framederecha.grid(column = 1, row = 0, sticky = 'n')
@@ -205,81 +208,102 @@ def guardar():
     except:
         messagebox.showerror('Guardar Dibujo', 'Imagen no guardada\n Error')
 
+def mensaje():
+    DURATION = 2000
+    top = Toplevel()
+    top.title('Firulais')
+    WELCOME_MSG = 'Has dicho: {}'.format(texto)
+    Message(top, text = WELCOME_MSG, padx=20, pady=20).pack()
+    top.after(DURATION, top.destroy)
+
 
 def reconocimiento():
-     
-    
+    global texto
     with sr.Microphone() as source: 
         print('Hola, soy tu asistente de voz')
         audio=reco.listen(source)
 
         try: 
-            text = reco.recognize_google(audio)
-            text = text.lower()
-            print ('Has dicho: {}'.format(text))
-            print (text)
-            if "color" in text:
+            texto = reco.recognize_google(audio)
+            texto = texto.lower()
+            print ('Has dicho: {}'.format(texto))
+
+            #canva_label = Canvas(frameizquierda)
+
+            #scrollbar = Scrollbar(frameizquierda, orient="vertical", command=canva_label.yview)
+            #scrollbar_frame = Scrollbar(canva_label)
+
+            #canva_label((0,0), window = scrollbar_frame, anchor="nw")
+
+
+            #canva_label.configure(yscrollcommand=scrollbar.set)
+            #l_1 = Label(frameizquierda, text = 'Has dicho: {}'.format(texto))
+            #l_1.pack()
+
+            #messagebox.showinfo(title='Firulaiis', message='Has dicho: {}'.format(texto), padx=20,pady=20)
+
+            mensaje()
+
+            if "color" in texto:
                 color1()
-            if "fill" in text:
+            if "fill" in texto:
                 color1()
-            if "borrar" in text:
+            if "borrar" in texto:
                 borrar() 
-            if "left" in text:
+            if "left" in texto:
                 izquierda() 
-            if "right" in text:
+            if "right" in texto:
                 derecha() 
-            if "down" in text:  
+            if "down" in texto:  
                 abajo() 
-            if "above" in text:
+            if "above" in texto:
                 arriba() 
-            if "delete" in text:
+            if "delete" in texto:
                 borrar() 
-            if "clean" in text:
+            if "clean" in texto:
                 nuevo() 
-            if "save" in text:
+            if "save" in texto:
                 guardar()
                 
             #colores
-            if 'White' in text or 'white' in text:
+            if 'White' in texto or 'white' in texto:
                  colorselec(1) 
 
-            if "Black" in text or "black" in text:
+            if "Black" in texto or "black" in texto:
                 colorselec(2) 
             
-            if "Gray" in text or "gray" in text:
+            if "Gray" in texto or "gray" in texto:
                 colorselec(3) 
 
-            if "Blue"  in text or "blue" in text:
+            if "Blue"  in texto or "blue" in texto:
                 colorselec(4)
 
-            if "Aqua" in text or "aqua" in text:
+            if "Aqua" in texto or "aqua" in texto:
                 colorselec(5)
                 
-            if "Dark green" in text or "dark green" in text:
+            if "Dark green" in texto or "dark green" in texto:
                 colorselec()
 
-            if "Green" in text or "green" in text:
+            if "Green" in texto or "green" in texto:
                 colorselec(6)
 
-            if "Yellow" in text or "yellow" in text:
+            if "Yellow" in texto or "yellow" in texto:
                 colorselec(7)
 
-            if "Brown" in text or "brown" in text:
+            if "Brown" in texto or "brown" in texto:
                 colorselec(8)            
 
-            if 'Orange' in text or 'orange' in text:
+            if 'Orange' in texto or 'orange' in texto:
                 colorselec(9) 
 
-            if "Ginger" in text or "ginger" in text:
+            if "Ginger" in texto or "ginger" in texto:
                 colorselec(10)
 
-            if "Pink" in text or "pink" in text:
+            if "Pink" in texto or "pink" in texto:
                 colorselec(11)
 
-            if "Purple" in text or "purple" in text:
+            if "Purple" in texto or "purple" in texto:
                 colorselec(12)
-
-            
 
         except:
             print('No he entendido')
