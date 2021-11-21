@@ -123,8 +123,8 @@ def paleta():
     id_rojo = canvas_colores.create_rectangle((370,10,400,40), fill = 'red', outline="")
     canvas_colores.tag_bind(id_rojo, '<Button-1>', lambda x: mostrar_color('red'))       
 
-    id_magenta = canvas_colores.create_rectangle((410,10,440,40), fill = 'magenta', outline="")
-    canvas_colores.tag_bind(id_magenta, '<Button-1>', lambda x: mostrar_color('magenta'))
+    id_rosado = canvas_colores.create_rectangle((410,10,440,40), fill = 'deep pink', outline="")
+    canvas_colores.tag_bind(id_rosado, '<Button-1>', lambda x: mostrar_color('deep pink'))
 
     id_morado = canvas_colores.create_rectangle((450,10,480,40), fill = 'purple', outline="")
     canvas_colores.tag_bind(id_morado, '<Button-1>', lambda x: mostrar_color('purple'))   
@@ -180,7 +180,7 @@ def colorselec(pal):
 
     elif pal==11: 
 
-        mostrar_color('magenta')      
+        mostrar_color('deep pink')      
 
     elif pal==12:
 
@@ -228,28 +228,10 @@ def reconocimiento():
             texto = texto.lower()
             print ('Has dicho: {}'.format(texto))
 
-            #canva_label = Canvas(frameizquierda)
-
-            #scrollbar = Scrollbar(frameizquierda, orient="vertical", command=canva_label.yview)
-            #scrollbar_frame = Scrollbar(canva_label)
-
-            #canva_label((0,0), window = scrollbar_frame, anchor="nw")
-
-
-            #canva_label.configure(yscrollcommand=scrollbar.set)
-            #l_1 = Label(frameizquierda, text = 'Has dicho: {}'.format(texto))
-            #l_1.pack()
-
-            #messagebox.showinfo(title='Firulaiis', message='Has dicho: {}'.format(texto), padx=20,pady=20)
-
             mensaje()
 
-            if "color" in texto:
+            if "color" in texto or "fill" in texto or "full" in texto or "pack" in texto:
                 color1()
-            if "fill" in texto:
-                color1()
-            if "borrar" in texto:
-                borrar() 
             if "left" in texto:
                 izquierda() 
             if "right" in texto:
@@ -262,7 +244,7 @@ def reconocimiento():
                 borrar() 
             if "clean" in texto:
                 nuevo() 
-            if "save" in texto:
+            if "save" in texto or "keep" in texto:
                 guardar()
                 
             #colores
