@@ -6,6 +6,7 @@ from tkinter import colorchooser
 
 from tkinter import Canvas, Tk, ttk, Frame, Button, Widget, filedialog, Scale, HORIZONTAL, ALL
 import PIL.ImageGrab as ImageGrab
+import tkinter as tk
 from tkinter.messagebox import *
 
 reco= sr.Recognizer()
@@ -19,7 +20,7 @@ centro_y = 362
 
 # frame principal comandos y canvas de dibujo
 
-frameizquierda=Frame(ventana, height=500, width=200, bg = 'Gainsboro')
+frameizquierda=Frame(ventana, height=750, width=300, bg = 'Gainsboro')
 frameizquierda.grid(column = 0, row = 0, sticky = 'n')
 
 
@@ -28,7 +29,7 @@ framederecha.grid(column = 1, row = 0, sticky = 'n')
 
 frame = Frame(framederecha, height=70, width=700, bg = 'white')
 frame.grid(column = 0, row = 1, columnspan= 2, pady=2, sticky = 'ew')
-frame.columnconfigure(0, minsize=100, weight=5)
+frame.columnconfigure(0, minsize=100, weight=5) 
 
 framebotones=Frame(framederecha, height=100, width=750, bg = 'Gainsboro')
 framebotones.grid(column = 0, row = 2, columnspan=2, sticky ='ew')
@@ -38,6 +39,14 @@ framebotones.grid(column = 0, row = 2, columnspan=2, sticky ='ew')
 
 canvas = Canvas (framederecha, width=750, height=750, bg="Gainsboro")
 canvas.grid(column=0, row=0, columnspan=2)
+
+#canvas iz
+#load= Image.open("E:\Documentos\Gabs\UMNG\OCTAVO\INTELIGENCIA ARTIFICIAL\Instruc.png")
+render = tk.PhotoImage(file="Instruc.png")
+canvas.create_image(0,0,anchor="nw", image=render)
+img = Label(frameizquierda, image=render)
+img.place(x=0, y=0)
+
 
 def pintar_pixel():
     global pixel
@@ -188,6 +197,10 @@ def colorselec(pal):
 
 paleta()
 
+def exit():
+    ventana.destroy()
+    ventana.quit()
+
 def borrar():    
     item  = canvas.create_rectangle(centro_x, centro_y, centro_x+15, centro_y+15) 
     canvas.itemconfigure(item, fill='Ghost White', outline='Gainsboro')
@@ -245,6 +258,8 @@ def reconocimiento():
                 nuevo() 
             if "save" in texto or "keep" in texto:
                 guardar()
+            if "exit" in texto:
+                exit()
                 
             #colores
             if 'White' in texto or 'white' in texto:

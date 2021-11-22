@@ -104,8 +104,14 @@ def guardar():
     try:
         filename = filedialog.asksaveasfilename(defaultextension='.png')
 
-        x = ventana.winfo_rootx() + canvas.winfo_x()
-        y = ventana.winfo_rooty() + canvas.winfo_y()
+        x = ventana.winfo_rootx() + 210
+        y = ventana.winfo_rooty() + 10
+
+        print(x)
+        print(y)
+        print(canvas.winfo_x)
+        print(canvas.winfo_y)
+
 
         x1 = x + canvas.winfo_width()
         y1 = y + canvas.winfo_height()
